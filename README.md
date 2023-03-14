@@ -8,7 +8,7 @@ This app is a simple and easy-to-configure explorer for Cloudflare R2 buckets. T
 
 - Listing objects in a bucket
 
-- Searching by bucket name
+- Searching by object name
 
 - Sorting objects by name
 
@@ -36,7 +36,5 @@ pip install -r requirements.txt
 npm update
 python main.py
 ```
-
-
 
 If you like this app please be sure to leave a star on my github repo, thanks.
