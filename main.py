@@ -9,6 +9,9 @@ import boto3
 
 import tkinter as tk
 from tkinter import filedialog
+import requests
+
+
 
 ####################################################################################################
 ## Cloudflare R2 Explorer/Desktop app
@@ -54,10 +57,25 @@ def objcopylink(objectname): # returns url ready for copying to clipboard by ele
     return url
 
 @eel.expose
-def objdl(objectname): # function trigged by clicking the download button next to an object - NOT yet implemented
-    print('object download url = '+ url)
-    url = "https://" + config.domain + "/" + objectname 
-    return url
+def objdl(objectname): # function trigged by clicking the download button next to an object, downloads object over http and saves where user selects
+    
+    url = "https://" + config.domain + "/" + objectname
+
+    root = tk.Tk()
+    root.withdraw()
+    root.directory=filedialog.askdirectory(title="Select where to save {}".format(objectname))
+    
+    file_name = os.path.join(root.directory + '/' + objectname)
+
+    headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'}
+
+    req = requests.get(url, headers=headers, timeout=10)
+
+    r = requests.get(url)  
+    with open(file_name, 'wb') as f:
+        f.write(req.content)
+    
+    return
 
 
 @eel.expose
