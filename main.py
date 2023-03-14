@@ -1,4 +1,3 @@
-import config
 import json
 import os
 import subprocess
@@ -9,6 +8,8 @@ import boto3
 
 import tkinter as tk
 from tkinter import filedialog
+from tkinter import messagebox
+
 import requests
 import urllib.parse
 
@@ -18,17 +19,24 @@ import urllib.parse
 ## developed by aznoc https://github.com/azn0c
 ####################################################################################################
 
+
+try:
+    with open('config.json', 'r') as f:
+        config = json.load(f)
+except:
+    messagebox.showerror("Error", "error loading config.json, make sure it's in the same directory as cloudflare-r2-desktop")
+
 eel.init('web')
 
 s3 = boto3.resource('s3',
-  endpoint_url = "https://%s.r2.cloudflarestorage.com" % (config.account_id),
-  aws_access_key_id = config.access_key_id,
-  aws_secret_access_key = config.secret_access_key
+  endpoint_url = "https://%s.r2.cloudflarestorage.com" % (config['account_id']),
+  aws_access_key_id = config['access_key_id'],
+  aws_secret_access_key = config['secret_access_key']
 )
 
 @eel.expose # fetching objects from bucket, bucket name is stored in config
 def fetchobjects():
-    bucket = s3.Bucket(config.bucket_name)
+    bucket = s3.Bucket(config['bucket_name'])
     objs = {}
     for item in bucket.objects.all():
         objs[item.key] = {}
@@ -39,7 +47,7 @@ def fetchobjects():
 
 @eel.expose
 def fetchbucketname(): # function used to populate the page title
-   return(config.bucket_name + ' bucket')
+   return(config['bucket_name'] + ' bucket')
 
 @eel.expose
 def objupload(): # handle file uploads to the bucket
@@ -48,18 +56,18 @@ def objupload(): # handle file uploads to the bucket
 
     file_path = filedialog.askopenfilename()
     f = open(file_path, "rb")
-    bucket = s3.Bucket(config.bucket_name)
+    bucket = s3.Bucket(config['bucket_name'])
     res = bucket.Object(os.path.basename(file_path)).put(Body=f.read())
 
 @eel.expose
 def objcopylink(objectname): # returns url ready for copying to clipboard by electron code
-    url = "https://" + config.domain + "/" + urllib.parse.quote(objectname, safe='/')
+    url = "https://" + config['domain'] + "/" + urllib.parse.quote(objectname, safe='/')
     return url
 
 @eel.expose
 def objdl(objectname): # function trigged by clicking the download button next to an object, downloads object over http and saves where user selects
     
-    url = "https://" + config.domain + "/" + objectname
+    url = "https://" + config['domain'] + "/" + objectname
 
     root = tk.Tk()
     root.withdraw()
@@ -80,7 +88,7 @@ def objdl(objectname): # function trigged by clicking the download button next t
 
 @eel.expose
 def openurl(objectname): # this function is triggered by clicking on an object's name, which opens it in the user's browser
-    url = "https://" + config.domain + "/" + objectname 
+    url = "https://" + config['domain'] + "/" + objectname 
     if sys.platform in ['win32', 'win64']:
         os.startfile(url)
     elif sys.platform=='darwin':
