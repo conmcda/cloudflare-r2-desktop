@@ -4,7 +4,7 @@ function fetchobjs() {
     const res = JSON.parse(objs);
     for (const key in res){
 
-        document.getElementsByTagName("tbody")[0].innerHTML+= '<tr><td class="tg-0lax obj-name"><a class="filename" onclick="eel.openurl(\''+key+'\') ">'+key+'</a></td><td class="tg-0lax obj-size">'+res[key]['size']+'</td><td class="tg-0lax obj-mod">'+res[key]['last_modified']+'</td><td class="tg-0lax obj-dl"><i onclick="eel.objdl(\''+key+'\')();" class="gg-software-download"></i></td><td class="tg-0lax obj-url"><i onclick="eel.objcopylink(\''+key+'\')(function(url){setClipboard(url);});" class="gg-link"></i></td></tr>';
+        document.getElementsByTagName("tbody")[0].innerHTML+= '<tr><td class="tg-0lax obj-name"><a class="filename" onclick="eel.openurl(\''+key+'\') ">'+key+'</a></td><td class="tg-0lax obj-size">'+res[key]['size']+'</td><td class="tg-0lax obj-mod">'+res[key]['last_modified']+'</td><td class="tg-0lax obj-dl"><i onclick="eel.objdl(\''+key+'\')(function(filepath){filesavenoti(filepath);});" class="gg-software-download"></i></td><td class="tg-0lax obj-url"><i onclick="eel.objcopylink(\''+key+'\')(function(url){setClipboard(url);});" class="gg-link"></i></td></tr>';
     }
     table = $('#objtable').DataTable({
       "paging" : true,
@@ -28,7 +28,7 @@ function refreshtable() { // refreshes table with fresh list of objects from clo
     const res = JSON.parse(objs);
     for (const key in res){
 
-        document.getElementsByTagName("tbody")[0].innerHTML+= '<tr><td class="tg-0lax obj-name"><a class="filename" onclick="eel.openurl(\''+key+'\') ">'+key+'</a></td><td class="tg-0lax obj-size">'+res[key]['size']+'</td><td class="tg-0lax obj-mod">'+res[key]['last_modified']+'</td><td class="tg-0lax obj-dl"><i onclick="eel.objdl(\''+key+'\')();" class="gg-software-download"></i></td><td class="tg-0lax obj-url"><i onclick="eel.objcopylink(\''+key+'\')(function(url){setClipboard(url);});" class="gg-link"></i></td></tr>';
+        document.getElementsByTagName("tbody")[0].innerHTML+= '<tr><td class="tg-0lax obj-name"><a class="filename" onclick="eel.openurl(\''+key+'\') ">'+key+'</a></td><td class="tg-0lax obj-size">'+res[key]['size']+'</td><td class="tg-0lax obj-mod">'+res[key]['last_modified']+'</td><td class="tg-0lax obj-dl"><i onclick="eel.objdl(\''+key+'\')(function(filepath){filesavenoti(filepath);});" class="gg-software-download"></i></td><td class="tg-0lax obj-url"><i onclick="eel.objcopylink(\''+key+'\')(function(url){setClipboard(url);});" class="gg-link"></i></td></tr>';
     }
     table = $('#objtable').DataTable({
       "paging" : true,
@@ -57,6 +57,18 @@ function setClipboard(text) {
   window.ipcRender.setclip(text); // sends clipboard url over ipc to main.js (ready to copy to clipboard with electron's clipboard.writeText)
   Toastify({ // display green toast notification saying "URL Copied to clipboard."
     text: "URL Copied to clipboard.",
+    className: "info",
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)",
+    },
+    gravity: "bottom",
+    position: "right",
+  }).showToast();
+}
+
+function filesavenoti(filepath) {
+  Toastify({ // display green toast notification on file save
+    text: "Successfully saved file to " + filepath,
     className: "info",
     style: {
       background: "linear-gradient(to right, #00b09b, #96c93d)",

@@ -83,7 +83,7 @@ def objdl(objectname): # function trigged by clicking the download button next t
     with open(file_name, 'wb') as f:
         f.write(req.content)
     
-    return
+    return file_name
 
 
 @eel.expose
