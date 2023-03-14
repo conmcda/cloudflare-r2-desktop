@@ -1,4 +1,4 @@
 eel
-tkinter
+tk
 boto3
 requests

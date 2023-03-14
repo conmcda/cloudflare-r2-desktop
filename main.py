@@ -10,7 +10,7 @@ import boto3
 import tkinter as tk
 from tkinter import filedialog
 import requests
-
+import urllib.parse
 
 
 ####################################################################################################
@@ -53,7 +53,7 @@ def objupload(): # handle file uploads to the bucket
 
 @eel.expose
 def objcopylink(objectname): # returns url ready for copying to clipboard by electron code
-    url = "https://" + config.domain + "/" + objectname 
+    url = "https://" + config.domain + "/" + urllib.parse.quote(objectname, safe='/')
     return url
 
 @eel.expose
