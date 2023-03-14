@@ -1,3 +1,4 @@
 eel
 tkinter
 boto3
+requests
