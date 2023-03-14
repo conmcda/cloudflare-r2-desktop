@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloudflare R2 Desktop App</title>
+    <link rel="stylesheet" href="static/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/link.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/software-download.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/sync.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    
+
+</head>
+
+<body>
+<div id="main">
+    <div id="topbar" class="clearfix"><h2 id="bucketname"></h2><button type="button" title="Upload object" id="btnupload">Upload</button><button type="button" title="Refresh objects" id="btnrefresh"><i class="gg-sync"></i></button></div>
+    <hr>
+    <div id="files">
+        <table id="objtable" class="tg">
+            <thead>
+              <tr>
+                <th class="tg-0lax obj-name">Objects</th>
+                <th class="tg-0lax obj-size">Size</th>
+                <th class="tg-0lax obj-mod">Modified</th>
+                <th class="tg-0lax obj-dl"></th>
+                <th class="tg-0lax obj-url"></th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            </table>
+    </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+<script type="text/javascript" src="/eel.js"></script>
+<script type="text/javascript" src="static/script.js"></script>
+
+</body>
+</html>

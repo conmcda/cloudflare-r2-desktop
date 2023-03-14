@@ -1,0 +1,10 @@
+{
+    "main": "main.js",
+    "devDependencies": {
+        "electron": "^15.5.5"
+    },
+    "dependencies": {
+        "@electron/remote": "^2.0.9",
+        "electron": "^15.5.5"
+    }
+}

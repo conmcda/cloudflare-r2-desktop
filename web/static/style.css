@@ -1,0 +1,212 @@
+html {
+    background:#1f2428;
+    font-family: 'Open Sans', sans-serif;
+}
+body {
+    margin:0;
+    padding:0;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+#main {
+    min-width:640px;
+    min-height:600px;
+    padding: 40px;
+}
+
+#topbar h2 {
+    color: #fff;
+    float: left;
+}
+
+#topbar button {
+    float: right;
+}
+
+a {
+    color: #50a1f1;
+}
+a:hover {
+    cursor: pointer;
+}
+
+button {
+    background-color: #24292e;
+    color: #50a1f1;
+    border: 2px solid #50a1f1;
+    padding: 10px;
+    font-weight: 600;
+}
+button:focus {
+    outline: none;
+}
+
+#btnrefresh {
+    margin-right: 20px;
+    height: 39px;
+    width: 39px;
+}
+
+#btnrefresh i {
+    margin-left: -1px;
+    margin-top: -1px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #50a1f1;
+    margin: 1em 0;
+    padding: 0;
+}
+
+#files ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#files {
+    color:#5a6671;
+}
+#files a {
+    text-decoration: none;
+}
+#files a.url {
+    float: right;
+}
+#files .obj-name {
+    width: 55%;
+}
+#files .obj-size {
+    width:15%;
+}
+#files .obj-mod {
+    width:30%;
+}
+#files .obj-dl {
+    width:40px;
+}
+#files .obj-url {
+    width:40px;
+}
+
+.gg-software-download {
+    margin-top: 10px !important;
+}
+.gg-link {
+    margin-top: 7px !important;
+    margin-right: 10px !important;
+}
+.gg-software-download:hover, .gg-link:hover {
+    color: #50a1f1;
+}
+
+#files thead {
+    font-weight: bold;
+    color: #fff;
+    cursor:default;
+}
+
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border:none;border-width:1px;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg tr {border: 1px solid #2d3339 !important;}
+.tg th{border:none;border-width:1px;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+
+table.dataTable tr.dt-hasChild td.dt-control:before {
+	content: "-";
+	background-color: #d33333;
+}
+
+table.dataTable thead>tr>th.sorting,table.dataTable thead>tr>th.sorting_asc,table.dataTable thead>tr>th.sorting_desc,table.dataTable thead>tr>th.sorting_asc_disabled,table.dataTable thead>tr>th.sorting_desc_disabled,table.dataTable thead>tr>td.sorting,table.dataTable thead>tr>td.sorting_asc,table.dataTable thead>tr>td.sorting_desc,table.dataTable thead>tr>td.sorting_asc_disabled,table.dataTable thead>tr>td.sorting_desc_disabled {
+	cursor: pointer;
+	position: relative;
+	padding-right: 26px;
+}
+
+table.dataTable thead>tr>th.sorting:before,table.dataTable thead>tr>th.sorting:after,table.dataTable thead>tr>th.sorting_asc:before,table.dataTable thead>tr>th.sorting_asc:after,table.dataTable thead>tr>th.sorting_desc:before,table.dataTable thead>tr>th.sorting_desc:after,table.dataTable thead>tr>th.sorting_asc_disabled:before,table.dataTable thead>tr>th.sorting_asc_disabled:after,table.dataTable thead>tr>th.sorting_desc_disabled:before,table.dataTable thead>tr>th.sorting_desc_disabled:after,table.dataTable thead>tr>td.sorting:before,table.dataTable thead>tr>td.sorting:after,table.dataTable thead>tr>td.sorting_asc:before,table.dataTable thead>tr>td.sorting_asc:after,table.dataTable thead>tr>td.sorting_desc:before,table.dataTable thead>tr>td.sorting_desc:after,table.dataTable thead>tr>td.sorting_asc_disabled:before,table.dataTable thead>tr>td.sorting_asc_disabled:after,table.dataTable thead>tr>td.sorting_desc_disabled:before,table.dataTable thead>tr>td.sorting_desc_disabled:after {
+	position: absolute;
+	display: block;
+	opacity: .125;
+	right: 10px;
+	line-height: 9px;
+	font-size: .8em;
+}
+
+table.dataTable thead>tr>th.sorting:before,table.dataTable thead>tr>th.sorting_asc:before,table.dataTable thead>tr>th.sorting_desc:before,table.dataTable thead>tr>th.sorting_asc_disabled:before,table.dataTable thead>tr>th.sorting_desc_disabled:before,table.dataTable thead>tr>td.sorting:before,table.dataTable thead>tr>td.sorting_asc:before,table.dataTable thead>tr>td.sorting_desc:before,table.dataTable thead>tr>td.sorting_asc_disabled:before,table.dataTable thead>tr>td.sorting_desc_disabled:before {
+	bottom: 50%;
+	content: "▲";
+}
+
+table.dataTable thead>tr>th.sorting:after,table.dataTable thead>tr>th.sorting_asc:after,table.dataTable thead>tr>th.sorting_desc:after,table.dataTable thead>tr>th.sorting_asc_disabled:after,table.dataTable thead>tr>th.sorting_desc_disabled:after,table.dataTable thead>tr>td.sorting:after,table.dataTable thead>tr>td.sorting_asc:after,table.dataTable thead>tr>td.sorting_desc:after,table.dataTable thead>tr>td.sorting_asc_disabled:after,table.dataTable thead>tr>td.sorting_desc_disabled:after {
+	top: 50%;
+	content: "▼";
+}
+
+table.dataTable thead>tr>th.sorting_asc:before,table.dataTable thead>tr>th.sorting_desc:after,table.dataTable thead>tr>td.sorting_asc:before,table.dataTable thead>tr>td.sorting_desc:after {
+	opacity: .6;
+}
+
+table.dataTable thead>tr>th.sorting_desc_disabled:after,table.dataTable thead>tr>th.sorting_asc_disabled:before,table.dataTable thead>tr>td.sorting_desc_disabled:after,table.dataTable thead>tr>td.sorting_asc_disabled:before {
+	display: none;
+}
+
+.obj-dl:before, .obj-dl:after, .obj-url:before, .obj-url:after {
+    content: "" !important;
+}
+
+#objtable_length {
+    margin-bottom: 15px;
+}
+#objtable_length select {
+    background: #1f2428;
+    border-color: #1f2428;
+    color: #fff;
+    padding: 3px;
+}
+#objtable_length select:focus {
+    outline: none;
+}
+
+#objtable_filter {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#objtable_filter input {
+    border: none;
+    background-color: rgba(0,0,0,0.1);
+    color: #fff;
+    height: 30px
+}
+#objtable_filter input:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+}
+
+#objtable_wrapper {
+    position: relative;
+}
+.dataTables_paginate {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.paginate_button {
+    padding: 0 5px;
+}
+.current {
+    color: #fff !important;
+    cursor:default;
+}
+.disabled {
+    opacity: 0.3;
+}

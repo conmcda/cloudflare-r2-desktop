@@ -1,0 +1,79 @@
+import config
+import json
+import os
+import subprocess
+import sys
+
+import eel
+import boto3
+
+import tkinter as tk
+from tkinter import filedialog
+
+####################################################################################################
+## Cloudflare R2 Explorer/Desktop app
+## developed by aznoc https://github.com/azn0c
+####################################################################################################
+
+eel.init('web')
+
+s3 = boto3.resource('s3',
+  endpoint_url = "https://%s.r2.cloudflarestorage.com" % (config.account_id),
+  aws_access_key_id = config.access_key_id,
+  aws_secret_access_key = config.secret_access_key
+)
+
+@eel.expose # fetching objects from bucket, bucket name is stored in config
+def fetchobjects():
+    bucket = s3.Bucket(config.bucket_name)
+    objs = {}
+    for item in bucket.objects.all():
+        objs[item.key] = {}
+        objs[item.key]['last_modified'] = str(item.last_modified.strftime("%Y-%m-%d %H:%M:%S"))
+        objs[item.key]['size'] = str(item.size)
+    print("fetched objects from cloudflare API")
+    return(json.dumps(objs))
+
+@eel.expose
+def fetchbucketname(): # function used to populate the page title
+   return(config.bucket_name + ' bucket')
+
+@eel.expose
+def objupload(): # handle file uploads to the bucket
+    root = tk.Tk()
+    root.withdraw()
+
+    file_path = filedialog.askopenfilename()
+    f = open(file_path, "rb")
+    bucket = s3.Bucket(config.bucket_name)
+    res = bucket.Object(os.path.basename(file_path)).put(Body=f.read())
+
+@eel.expose
+def objcopylink(objectname): # returns url ready for copying to clipboard by electron code
+    url = "https://" + config.domain + "/" + objectname 
+    return url
+
+@eel.expose
+def objdl(objectname): # function trigged by clicking the download button next to an object - NOT yet implemented
+    print('object download url = '+ url)
+    url = "https://" + config.domain + "/" + objectname 
+    return url
+
+
+@eel.expose
+def openurl(objectname): # this function is triggered by clicking on an object's name, which opens it in the user's browser
+    url = "https://" + config.domain + "/" + objectname 
+    if sys.platform in ['win32', 'win64']:
+        os.startfile(url)
+    elif sys.platform=='darwin':
+        subprocess.Popen(['open', url])
+    else:
+        try:
+            subprocess.Popen(['xdg-open', url])
+        except OSError:
+            print('Please open a browser on: '+url)
+
+if sys.platform in ['win32', 'win64']: # if OS is windows then set eel path to location of electron.exe
+    eel.browsers.set_path('electron', 'node_modules/electron/dist/electron.exe')
+
+eel.start("index.html", mode="electron")
