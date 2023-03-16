@@ -67,6 +67,9 @@ function setClipboard(text) {
 }
 
 function filesavenoti(filepath) {
+  if (filepath == 1) {
+    return;
+  }
   Toastify({ // display green toast notification on file save
     text: "Successfully saved file to " + filepath,
     className: "info",
@@ -78,6 +81,9 @@ function filesavenoti(filepath) {
   }).showToast();
 }
 function objuploadnoti(filepath) {
+  if (filepath == 1) {
+    return;
+  }
   Toastify({ // display green toast notification on file save
     text: "Successfully uploaded " + filepath,
     className: "info",

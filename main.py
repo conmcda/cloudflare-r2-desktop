@@ -55,6 +55,9 @@ def objupload(): # handle file uploads to the bucket
     root.withdraw()
 
     file_path = filedialog.askopenfilename()
+    if not file_path:
+        return 1
+
     f = open(file_path, "rb")
     bucket = s3.Bucket(config['bucket_name'])
     res = bucket.Object(os.path.basename(file_path)).put(Body=f.read())
@@ -73,6 +76,9 @@ def objdl(objectname): # function trigged by clicking the download button next t
     root = tk.Tk()
     root.withdraw()
     root.directory=filedialog.askdirectory(title="Select where to save {}".format(objectname))
+
+    if not root.directory:
+        return 1
     
     file_name = os.path.join(root.directory + '/' + objectname)
 
