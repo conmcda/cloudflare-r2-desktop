@@ -4,7 +4,7 @@
 
 This app is a simple and easy-to-configure explorer for Cloudflare R2 buckets. The app is developed in python with python eel (similar to electron). It has simple features such as:
 
-- Uploading a file to a bucket
+- Uploading multiple files at once to a bucket
 
 - Deleting objects from a bucket
 
