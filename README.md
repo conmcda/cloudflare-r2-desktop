@@ -18,15 +18,16 @@ This app is a simple and easy-to-configure explorer for Cloudflare R2 buckets. T
 
 ## Installing/running the app
 
-Be sure to edit the config.py with your Cloudflare API details:
+Be sure to edit the config.json with your Cloudflare API details, domain and bucket name:
 
-```python
-account_id = ''
-access_key_id = ''
-secret_access_key = ''
-
-domain = 'custom.domain.here or r2.dev domain' # make sure no slashes
-bucket_name = "files" # your bucket name here
+```json
+{
+	"account_id": "",
+	"access_key_id": "",
+	"secret_access_key": "",
+	"domain": "custom.domain.here or r2.dev domain", # make sure no slashes
+	"bucket_name": "files" # your bucket name here
+}
 ```
 
 Run the following commands in the root folder:
