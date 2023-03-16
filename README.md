@@ -25,10 +25,14 @@ Be sure to edit the config.json with your Cloudflare API details, domain and buc
 	"account_id": "",
 	"access_key_id": "",
 	"secret_access_key": "",
-	"domain": "custom.domain.here or r2.dev domain", # make sure no slashes
-	"bucket_name": "files" # your bucket name here
+	"domain": "custom.domain.here or r2.dev domain",
+	"bucket_name": "your bucket name here"
 }
 ```
+
+**Make sure domain doesn't contain any slashes.**
+
+
 
 Run the following commands in the root folder:
 
