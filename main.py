@@ -54,14 +54,20 @@ def objupload(): # handle file uploads to the bucket
     root = tk.Tk()
     root.withdraw()
 
-    file_path = filedialog.askopenfilename()
-    if not file_path:
-        return 1
+    file_paths = filedialog.askopenfilenames()
+    if not file_paths:
+        return 0
 
-    f = open(file_path, "rb")
-    bucket = s3.Bucket(config['bucket_name'])
-    res = bucket.Object(os.path.basename(file_path)).put(Body=f.read())
-    return file_path
+    files = list(file_paths)
+    i = 0
+    for file_path in files:
+        print ('uploading file %s (%s)' % (i, file_path))
+        i = i + 1
+        f = open(file_path, "rb")
+        bucket = s3.Bucket(config['bucket_name'])
+        res = bucket.Object(os.path.basename(file_path)).put(Body=f.read())
+
+    return i
 
 @eel.expose
 def objdelete(objectname): # handle file uploads to the bucket
