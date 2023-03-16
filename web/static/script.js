@@ -77,11 +77,33 @@ function filesavenoti(filepath) {
     position: "right",
   }).showToast();
 }
-
+function objuploadnoti(filepath) {
+  Toastify({ // display green toast notification on file save
+    text: "Successfully uploaded " + filepath,
+    className: "info",
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)",
+    },
+    gravity: "bottom",
+    position: "right",
+  }).showToast();
+}
+function refreshnoti() {
+  Toastify({ // display green toast notification on file save
+    text: "Refreshed objects list",
+    className: "info",
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)",
+    },
+    gravity: "bottom",
+    position: "right",
+  }).showToast();
+}
 document.getElementById('btnupload').addEventListener('click', () => {
-  eel.objupload()(function(){refreshtable();}); // calls objupload python function, then refreshes the table to display new object uploaded
+  eel.objupload()(function(file_path){refreshtable();objuploadnoti(file_path);}); // calls objupload python function, then refreshes the table to display new object uploaded
 })
 
 document.getElementById('btnrefresh').addEventListener('click', () => { // handles the refresh button, to display any new objects from cloudflare bucket
   refreshtable();
+  refreshnoti();
 })

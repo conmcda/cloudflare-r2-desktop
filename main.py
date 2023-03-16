@@ -58,6 +58,7 @@ def objupload(): # handle file uploads to the bucket
     f = open(file_path, "rb")
     bucket = s3.Bucket(config['bucket_name'])
     res = bucket.Object(os.path.basename(file_path)).put(Body=f.read())
+    return file_path
 
 @eel.expose
 def objcopylink(objectname): # returns url ready for copying to clipboard by electron code
