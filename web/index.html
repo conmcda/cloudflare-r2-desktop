@@ -11,19 +11,20 @@
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/link.css' rel='stylesheet'>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/software-download.css' rel='stylesheet'>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/sync.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/trash.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    
 
 </head>
 
 <body>
 <div id="main">
-    <div id="topbar" class="clearfix"><h2 id="bucketname"></h2><button type="button" title="Upload object" id="btnupload">Upload</button><button type="button" title="Refresh objects" id="btnrefresh"><i class="gg-sync"></i></button></div>
+    <div id="topbar" class="clearfix"><h2 id="bucketname"></h2><button type="button" title="Upload object" id="btnupload">Upload</button><button type="button" title="Refresh objects" id="btnrefresh"><i class="gg-sync"></i></button><button type="button" title="Delete" id="btndelete"><i class="gg-trash"></i></button></div>
     <hr>
     <div id="files">
         <table id="objtable" class="tg">
             <thead>
               <tr>
+                <th class="obj-sel"></th>
                 <th class="tg-0lax obj-name">Objects</th>
                 <th class="tg-0lax obj-size">Size</th>
                 <th class="tg-0lax obj-mod">Modified</th>
@@ -35,10 +36,11 @@
             </tbody>
             </table>
     </div>
-
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/fixedcolumns/4.2.2/js/dataTables.fixedColumns.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 <script type="text/javascript" src="/eel.js"></script>

@@ -64,6 +64,12 @@ def objupload(): # handle file uploads to the bucket
     return file_path
 
 @eel.expose
+def objdelete(objectname): # handle file uploads to the bucket
+    bucket = s3.Bucket(config['bucket_name'])
+    bucket.Object(objectname).delete()
+    return
+
+@eel.expose
 def objcopylink(objectname): # returns url ready for copying to clipboard by electron code
     url = "https://" + config['domain'] + "/" + urllib.parse.quote(objectname, safe='/')
     return url
