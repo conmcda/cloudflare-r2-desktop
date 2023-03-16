@@ -6,6 +6,8 @@ This app is a simple and easy-to-configure explorer for Cloudflare R2 buckets. T
 
 - Uploading a file to a bucket
 
+- Deleting objects from a bucket
+
 - Listing objects in a bucket
 
 - Searching by object name
@@ -22,17 +24,15 @@ Be sure to edit the config.json with your Cloudflare API details, domain and buc
 
 ```json
 {
-	"account_id": "",
-	"access_key_id": "",
-	"secret_access_key": "",
-	"domain": "custom.domain.here or r2.dev domain",
-	"bucket_name": "your bucket name here"
+    "account_id": "",
+    "access_key_id": "",
+    "secret_access_key": "",
+    "domain": "custom.domain.here or r2.dev domain",
+    "bucket_name": "your bucket name here"
 }
 ```
 
 **Make sure domain doesn't contain any slashes.**
-
-
 
 Run the following commands in the root folder:
 
