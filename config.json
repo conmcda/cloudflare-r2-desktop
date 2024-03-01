@@ -1,7 +1,8 @@
 {
-	"account_id": "",
-	"access_key_id": "",
-	"secret_access_key": "",
-	"domain": "r2.aznoc.net",
-	"bucket_name": "files"
+	"account_id": "eXXXXe01260f6XXXXc4c11XX",
+	"access_key_id": "f626b3XXXec91364d3cXXXXed25",
+	"secret_access_key": "XXXXffdcf2900d7ef858a767e0df10a15bXXX5164122c77XXe",
+	"domain": "https://XXce01260f6fXXXXXX.r2.cloudflarestorage.com",
+	"bucket_name": "belisc",
+	"directory": "production"
 }

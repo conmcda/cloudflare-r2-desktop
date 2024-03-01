@@ -1,3 +1,5 @@
+# Add **Directory** to _config.json_
+
 # A simple Cloudflare R2 Desktop App
 
 ![Alt text](screenshot.png?raw=true "App Screenshot")
@@ -28,7 +30,8 @@ Be sure to edit the config.json with your Cloudflare API details, domain and buc
     "access_key_id": "",
     "secret_access_key": "",
     "domain": "custom.domain.here or r2.dev domain",
-    "bucket_name": "your bucket name here"
+    "bucket_name": "your bucket name here",
+    "directory": "your directory (optional)"
 }
 ```
 
